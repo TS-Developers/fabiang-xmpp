@@ -48,7 +48,6 @@ use Psr\Log\LoggerInterface;
  */
 class Options
 {
-
     /**
      *
      * @var ImplementationInterface
@@ -143,6 +142,11 @@ class Options
      */
     protected $contextOptions = [];
 
+    /**
+     *
+     * @var string
+     */
+    protected $source = 'beep';
 
     /**
      * Constructor.
@@ -306,16 +310,19 @@ class Options
      */
     public function getResource()
     {
-        $username = $this->getUsername();
-        $username = explode('/', $username);
-        return isset($username[1]) ? $username[1] : '';
+        return $this->source;
+    }
+
+    public function setResource($source)
+    {
+        $this->source = $source;
     }
 
     /**
-     * Get password.
-     *
-     * @return string
-     */
+        * Get password.
+        *
+        * @return string
+        */
     public function getPassword()
     {
         return $this->password;
